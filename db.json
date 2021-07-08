@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "productTitle": "Журнал \"Привет Москва\"",
+      "productArticle": 21213231,
+      "productPrice": 1200,
+      "productMaker": "Издательство \"Новая печать\"",
+      "productCategory": "Книги",
+      "productWeight": 1.5,
+      "productCount": 0,
+      "id": 1
+    },
+    {
+      "productTitle": "Диван \"Иван\"",
+      "productArticle": 21213231,
+      "productPrice": 33000,
+      "productMaker": "Leroy",
+      "productCategory": "Мебель",
+      "productWeight": 12,
+      "productCount": 23,
+      "id": 2
+    },
+    {
+      "productTitle": "Пылесос \"SOS\"",
+      "productArticle": 13423,
+      "productPrice": 120000,
+      "productMaker": null,
+      "productCategory": "Техника",
+      "productWeight": 3,
+      "productCount": 100,
+      "id": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "categoryTitle": "Мебель"
+    },
+    {
+      "id": 2,
+      "categoryTitle": "Техника"
+    },
+    {
+      "id": 3,
+      "categoryTitle": "Книги"
+    },
+    {
+      "id": 4,
+      "categoryTitle": "Телефоны"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-12 mt-2 mb-2">
+    <button class="btn btn-primary float-end" (click)="linkToItem()">Добавить продукт</button>
+  </div>
+</div>
+<div class="row">
+  <div>
+    <p>Фильтры и сортировка:</p>
+    <div>
+      <div class="mt-2">
+        <label for="category" class="control-label">Фильтр по категории товара(Не работает):</label>
+        <select class="form-select" aria-label="Default select example" [(ngModel)] = "category">
+          <option *ngFor="let categ of categoryList" value="{{ categ.id }}">{{ categ.categoryTitle }}</option>
+        </select>
+        <label for="category" class="control-label">Фильтр по категории товара:</label>
+        <select class="form-select" aria-label="Default select example" #count
+          (change)="filterData(count.value, 'count')">
+          <option *ngFor="let count of counts" value="{{ count.id }}">{{ count.value }}</option>
+        </select>
+      </div>
+    </div>
+    <label for="category" class="control-label">Сортировка по цене товара:</label>
+    <select class="form-select" aria-label="Default select example" #price (change)="sortData(price.value)">
+      <option value="0">По возрастанию</option>
+      <option value="1">По убыванию</option>
+    </select>
+    <label for="category" class="control-label">Сортировка по количеству товара:</label>
+    <select class="form-select" aria-label="Default select example" #countProd (change)="sortData(countProd.value)">
+      <option value="2">По возрастанию</option>
+      <option value="3">По убыванию</option>
+    </select>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Название</th>
+        <th scope="col">Категория</th>
+        <th scope="col">Вес(Кг)</th>
+        <th scope="col">Цена(Руб.)</th>
+        <th scope="col">Количество на складе(Шт.)</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.productTitle }}</td>
+        <td>{{ product.productCategory }}</td>
+        <td>{{ product.productWeight }} Кг</td>
+        <td>{{ product.productPrice }} Руб.</td>
+        <td>
+          {{ product.productCount }} Шт.
+          <div>
+            <button class="btn btn-primary btn-sm btn-block me-1" type="button" (click)="countProduct(product, 'plus')">
+              +
+            </button>
+            <button class="btn btn-danger btn-sm btn-block" type="button" (click)="countProduct(product, 'minus')"
+              [disabled]="product.productCount <= 0">
+              -
+            </button>
+          </div>
+        </td>
+        <td>
+          <button class="btn btn-primary btn-sm btn-block float-end" type="button" (click)="linkToItem(product.id)">
+            Редактировать
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

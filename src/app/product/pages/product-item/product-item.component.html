@@ -1,0 +1,143 @@
+<form [formGroup]="productForm" (ngSubmit) = "onAddNote()">
+    <div class="form-group mt-2">
+        <label for="title" class="control-label">Название продукта:</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="productTitle" 
+            placeholder="Название" 
+            formControlName="productTitle"
+            [ngClass]="{
+                'has-error':
+                    productForm.get('productTitle')!.invalid &&
+                    productForm.get('productTitle')!.touched
+            }"
+        >
+        <small class="form-text text-nuted">
+            Обязательное поле, длиной 50 символов
+        </small>
+    </div>
+    <div class="form-group mt-2">
+        <label for="article" class="control-label">Артикул продукта:</label>
+        <input 
+            type="number"
+            min="0"
+            class="form-control" 
+            id="productArticle" 
+            placeholder="Артикул" 
+            formControlName="productArticle"
+            [ngClass]="{
+                'has-error':
+                    productForm.get('productArticle')!.invalid &&
+                    productForm.get('productArticle')!.touched
+            }"
+        >
+        <small class="form-text text-nuted">
+            Обязательное поле, длиной 50 символов, вводятся только цифры
+        </small>
+    </div>
+    <div class="form-group mt-2">
+        <label for="price" class="control-label">Цена продукта(Руб.):</label>
+        <input 
+            type="number"
+            min="0"
+            class="form-control" 
+            id="productPrice" 
+            placeholder="Цена" 
+            formControlName="productPrice"
+            [ngClass]="{
+                'has-error':
+                    productForm.get('productPrice')!.invalid &&
+                    productForm.get('productPrice')!.touched
+            }"
+        >
+        <small class="form-text text-nuted">
+            Обязательное поле, длиной 50 символов, вводятся только цифры
+        </small>
+    </div>
+    <div class="form-group mt-2">
+        <label for="maker" class="control-label">Производитель продукта:</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="productMaker" 
+            placeholder="Производитель" 
+            formControlName="productMaker"
+        >
+        <small class="form-text text-nuted">
+            Не обязательное поле, длиной 200 символов
+        </small>
+    </div>
+    <div class="form-group mt-2">
+        <label for="category" class="control-label">Категория товара:</label>
+        <select 
+            class="form-select" 
+            aria-label="Default select example"
+            type="text"
+            id="productCategory" 
+            formControlName="productCategory"
+            [ngClass]="{
+                'has-error':
+                    productForm.get('productCategory')!.invalid &&
+                    productForm.get('productCategory')!.touched
+            }"
+        >
+            <option *ngFor="let category of categoryList" value = "{{ category.id }}">{{ category.categoryTitle }}</option>
+        </select>
+    </div>
+    <div class="form-group mt-2">
+        <label for="weight" class="control-label">Вес продукта(Кг):</label>
+        <input 
+            type="number"
+            min="0" 
+            class="form-control" 
+            id="productWeight" 
+            placeholder="Вес" 
+            formControlName="productWeight"
+            [ngClass]="{
+                'has-error':
+                    productForm.get('productWeight')!.invalid &&
+                    productForm.get('productWeight')!.touched
+            }"
+        >
+        <small class="form-text text-nuted">
+            Обязательное поле, длиной 50 символов, вводятся только цифры
+        </small>
+    </div>
+    <div class="form-group mt-2">
+        <label for="count" class="control-label">Количество продуктов(Шт.):</label>
+        <input 
+            type="number" 
+            min="0"
+            class="form-control" 
+            id="productCount" 
+            placeholder="Количество" 
+            formControlName="productCount"
+            [ngClass]="{
+                'has-error':
+                    productForm.get('productCount')!.invalid &&
+                    productForm.get('productCount')!.touched
+            }"
+        >
+        <small class="form-text text-nuted">
+            Обязательное поле, длиной 50 символов, вводятся только цифры
+        </small>
+    </div>
+    <div class="mt-2 mb-3">
+        <button 
+            class="btn btn-primary btn-lg btn-block me-2" 
+            type="submit" 
+            [disabled]="productForm.invalid"
+        >
+            Добавить
+        </button>
+        <button 
+            class="btn btn-danger btn-lg btn-block " 
+            type="button" *ngIf="id" 
+            (click)="onDeleteNote()"
+        >
+            Удалить
+        </button>
+    </div>
+
+</form>
