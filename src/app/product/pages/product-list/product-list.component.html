@@ -30,41 +30,43 @@
       <option value="3">По убыванию</option>
     </select>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Название</th>
-        <th scope="col">Категория</th>
-        <th scope="col">Вес(Кг)</th>
-        <th scope="col">Цена(Руб.)</th>
-        <th scope="col">Количество на складе(Шт.)</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of products">
-        <td>{{ product.productTitle }}</td>
-        <td>{{ product.productCategory }}</td>
-        <td>{{ product.productWeight }} Кг</td>
-        <td>{{ product.productPrice }} Руб.</td>
-        <td>
-          {{ product.productCount }} Шт.
-          <div>
-            <button class="btn btn-primary btn-sm btn-block me-1" type="button" (click)="countProduct(product, 'plus')">
-              +
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Название</th>
+          <th scope="col">Категория</th>
+          <th scope="col">Вес(Кг)</th>
+          <th scope="col">Цена(Руб.)</th>
+          <th scope="col">Количество на складе(Шт.)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.productTitle }}</td>
+          <td>{{ product.productCategory }}</td>
+          <td>{{ product.productWeight }} Кг</td>
+          <td>{{ product.productPrice }} Руб.</td>
+          <td>
+            {{ product.productCount }} Шт.
+            <div>
+              <button class="btn btn-primary btn-sm btn-block me-1" type="button" (click)="countProduct(product, 'plus')">
+                +
+              </button>
+              <button class="btn btn-danger btn-sm btn-block" type="button" (click)="countProduct(product, 'minus')"
+                [disabled]="product.productCount <= 0">
+                -
+              </button>
+            </div>
+          </td>
+          <td>
+            <button class="btn btn-primary btn-sm btn-block float-end" type="button" (click)="linkToItem(product.id)">
+              Редактировать
             </button>
-            <button class="btn btn-danger btn-sm btn-block" type="button" (click)="countProduct(product, 'minus')"
-              [disabled]="product.productCount <= 0">
-              -
-            </button>
-          </div>
-        </td>
-        <td>
-          <button class="btn btn-primary btn-sm btn-block float-end" type="button" (click)="linkToItem(product.id)">
-            Редактировать
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
